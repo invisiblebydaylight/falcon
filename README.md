@@ -319,11 +319,11 @@ M-x (falcon--run-all-tests)
 ## Troubleshooting
 
 ### AI responses seem missing, cut off or context appears truncated
-* Call `falcon/set-word-limit` to increase the rather low default setting
 * Try lowering `falcon-token-estimation-ratio` to 2.5-3.0 for code
 * Try raising to 4.5-5.0 for dense technical writing
 * Consider that your actual token count may be higher than estimated
-
+* Increase your context size with `falcon/set-context-token-limit` to ensure
+  there's enough space for all files getting attached.
 
 ## Implementation Notes
 * using a reasoning model when the word count is low will cause the completion

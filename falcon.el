@@ -630,15 +630,16 @@ the buffer ar added first. Defaults to 8192 token limit if
 
     (let ((current-tokens 0)
           (messages-to-include '()))
-      (dolist (message all-messages)
-        (let ((message-tokens (falcon--estimate-tokens message)))
-          ;; add message if it fits, otherwise stop
-          (if (<= (+ current-tokens message-tokens) available-tokens)
-              (progn
-                (push message messages-to-include)
-                (setq current-tokens (+ current-tokens message-tokens)))
-            ;; if this message alone exceeds the limit, we stop
-            (cl-return))))
+      (cl-block trim-loop
+        (dolist (message all-messages)
+          (let ((message-tokens (falcon--estimate-tokens message)))
+            ;; add message if it fits, otherwise stop
+            (if (<= (+ current-tokens message-tokens) available-tokens)
+                (progn
+                  (push message messages-to-include)
+                  (setq current-tokens (+ current-tokens message-tokens)))
+              ;; if this message alone exceeds the limit, we stop
+              (cl-return)))))
 
       ;; build final chatlog string (messages are already in correct order)
       (setq final-chatlog (string-join messages-to-include "\n\n")))
