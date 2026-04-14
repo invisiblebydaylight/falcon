@@ -1,11 +1,11 @@
 # FALCON: Folding Abstract Layers into Coherent Org Narratives
-FALCON is a structural bridge between your creative intent and the latent space of Large Language Models. Built specifically for the **Doom Emacs** ecosystem, it transforms Org-mode buffers into highly customizable AI chat environments within the comfort of a program fine-tuned for *wordcraft* over *decades*.
+FALCON is a structural bridge between your creative intent and the latent space of Large Language Models. Built specifically for the [Doom Emacs](https://github.com/doomemacs/doomemacs) ecosystem, it transforms [Org-mode](https://orgmode.org/) buffers into highly customizable AI chat environments within the comfort of a program fine-tuned for *wordcraft* over *decades*.
 
 Whether you're engaging in a multi-turn technical architectural debate or just chatting it up, FALCON manages the context, the prompts and the streaming delivery within your favorite text editor.
 
 Additionally, if writing *prose* and not *chats* is your thing, FALCON has you covered there as well by supporting plain text completion. This is configured in a similar way to the chat mode and supports the same set of samplers.
 
-No complex library dependency chain needed, just Doom Emacs, curl and FALCON.
+No complex library dependency chain needed, just Doom Emacs, curl and FALCON. Oh! And an OpenAI-compatable API like [openrouter](https://openrouter.ai/), [llama-swap](https://github.com/mostlygeek/llama-swap) or [llama-cpp's own server](https://github.com/ggml-org/llama.cpp) ... and a key for it.
 
 
 ## Installation (Doom Emacs) 
@@ -69,7 +69,7 @@ Hello! Can you help me understand how to structure my Emacs configuration?
 
 ```
 
-Place your cursor at the end of the "Jack" heading content area and press =SPC G t=, FALCON will generate a response under the heading.
+Place your cursor at the end of the "Jack" heading content area and press `SPC G t`, FALCON will generate a response under the heading.
 
 The text before the first heading is your **system prompt** - it sets the AI's behavior and provides any constant content you want to be available for the whole conversation. Each top-level heading represents a **participant** in the conversation.
 
