@@ -180,14 +180,18 @@ Returns a string suitable for AI prompting."
 
 (defun falcon--streaming-insert-handler (initial-point)
   "Return a streaming handler function for inserting text at INITIAL-POINT.
-The handler receives a string chunk and inserts it at the tracking point."
-  (let ((insertion-point initial-point))
+The handler receives a string chunk and inserts it at the tracking point.
+Handles buffer switches gracefully—text always goes where it was requested."
+  (let* ((original-buffer (current-buffer))
+         (insertion-marker (copy-marker initial-point)))
     (lambda (chunk)
       (when (and chunk (stringp chunk) (> (length chunk) 0))
-        (save-excursion
-          (goto-char insertion-point)
-          (insert chunk))
-        (setq insertion-point (+ insertion-point (length chunk)))))))
+        (with-current-buffer original-buffer
+          (goto-char insertion-marker)
+          (insert chunk)
+          (setq insertion-marker (point-marker)))))))
+
+
 
 (defun falcon--build-prompt-args (task)
   "Build prompt arguments plist from TASK configuration."

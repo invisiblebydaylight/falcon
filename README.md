@@ -140,7 +140,7 @@ The `:chat` API style. Designed for **instruct-tuned models**. This is the defau
 
 **Note:** The participant's name gets used to prefix the top-level heading's content when building the chat messages for the AI. For example, in the Quick Start section, the chat 'turn' for 'John' would look like this: `John: Hello! Can you help me understand how to structure my Emacs configuration?`.
 
-File can be attached to the chat context by setting a special property on the Org mode buffer. For example:
+Files can be attached to the chat context by setting a special property on the Org mode buffer. For example:
 
 ```org
 #+FALCON_FILES: src/main.el src/utils.el
@@ -323,10 +323,6 @@ M-x (falcon--run-all-tests)
 * Try lowering `falcon-token-estimation-ratio` to 2.5-3.0 for code
 * Try raising to 4.5-5.0 for dense technical writing
 * Consider that your actual token count may be higher than estimated
-
-### The response gets inserted at random spots
-* While waiting for the response from the AI, leave the cursor where it's at.
-  This will hopefully get resolved in a future bug fix.
 
 
 ## Implementation Notes
