@@ -863,6 +863,8 @@ Sampler settings are pulled from PROMPT-ARGS."
                           "-S"  ; but show errors
                           "-X" "POST"
                           "-H" (format "Authorization: Bearer %s" api-key)
+                          "-H" "HTTP-Referer: https://github.com/invisiblebydaylight/falcon"
+                          "-H" "X-OpenRouter-Title: falcon"
                           "-H" "Content-Type: application/json"
                           "-d" request-data
                           url)
@@ -917,6 +919,8 @@ REQUEST-BODY should be a plist in the form of:
                       "-N"
                       "-X" "POST"
                       "-H" ,(format "Authorization: Bearer %s" api-key)
+                      "-H" "HTTP-Referer: https://github.com/invisiblebydaylight/falcon"
+                      "-H" "X-OpenRouter-Title: falcon"
                       "-H" "Content-Type: application/json"
                       "-H" "Accept: text/event-stream"
                       "-d" ,request-data
